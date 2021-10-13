@@ -2,15 +2,60 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import './App.css';
 import abi from './utils/WavePortal.json';
+import { Message } from './Message'
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   
-    /**
+  /**
    * Create a variable here that holds the contract address after you deploy!
    */
+  /// allWAVEs state
+  const [allWaves, setAllWaves] = useState([]);
   const contractAddress = "0x15F8Be9Ecc6CE3bDD70a987d64797a88024Ab8E3";
   const contractABI = abi.abi
+  /////This get all waves
+  const getAllWaves = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
+
+        /*
+         * Call the getAllWaves method from your Smart Contract
+         */
+        const waves = await wavePortalContract.getAllWaves();
+        
+
+        /*
+         * We only need address, timestamp, and message in our UI so let's
+         * pick those out
+         */
+        let wavesCleaned = [];
+        waves.forEach(wave => {
+          wavesCleaned.push({
+            address: wave.waver,
+            timestamp: new Date(wave.timestamp * 1000),
+            message: wave.message
+          });
+        });
+
+        /*
+         * Store our data in React State
+         */
+        setAllWaves(wavesCleaned);
+      } else {
+        console.log("Ethereum object doesn't exist!")
+      }
+    } catch (error) {
+      console.log("error")
+      console.log(error);
+    }
+  }
+
+  ////// Ending above
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -29,6 +74,8 @@ const App = () => {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
         setCurrentAccount(account);
+        /// trying here
+        getAllWaves();
       } else {
         console.log("No authorized account found")
       }
@@ -53,6 +100,7 @@ const App = () => {
 
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]); 
+      // Maybe put it right here?
     } catch (error) {
       console.log(error)
     }
@@ -80,9 +128,12 @@ const wave = async () => {
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total corn count...", count.toNumber());
 
-        const waveTxn = await wavePortalContract.wave();
+        const waveTxn = await wavePortalContract.wave("NEIIIGH! 🌽!");
         console.log("Mining...", waveTxn.hash);
-
+        ////// TRY THIS:
+        ///const waveTxn = await wavePortalContract.wave("this is a message")
+        /// The above was edited for line 130
+        
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
 
@@ -95,6 +146,7 @@ const wave = async () => {
         console.log("Ethereum object doesn't exist!");
       }
     } catch (error) {
+      console.log("error")
       console.log(error)
       // console.log(message) //Added this
     }
@@ -115,15 +167,19 @@ const wave = async () => {
 
         <div className="bio">
         <p>Ando is taking care of some unicorns</p>
-        <p>They eat corn...this {} much corn!</p>
+        <p>They have eaten corn...this {} much corn!</p>
         <p>Throw some corn at them!</p>
         <p>And say Haaaayyy</p>
         <p>*They take RAINBOWS too</p>
         </div>
 
         <button className="waveButton" onClick={wave}>
-        <span role="img" aria-label="CORN">🌽</span>
+        <span role="img" aria-label="CORN">🌽</span> 
+        <p></p>
+        <Message />
         </button>
+
+        
         
         {/*
         * If there is no currentAccount render this button
@@ -133,6 +189,15 @@ const wave = async () => {
             READY...Connect Wallet!
           </button>
         )}
+        
+        {allWaves.map((wave, index) => {
+          return (
+            <div key={index} style={{ backgroundColor: "Lavender Blush", marginTop: "16px", padding: "8px" }}>
+              <div>Address: {wave.address}</div>
+              <div>Time: {wave.timestamp.toString()}</div>
+              <div>Message: {wave.message}</div>
+            </div>)
+        })}
       </div>
     </div>
   );
