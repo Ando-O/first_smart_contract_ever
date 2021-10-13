@@ -1,5 +1,63 @@
 {
   "files": {
+    "my-wave-portal/WavePortal.sol": [
+      {
+        "id": "4e78c45a-c61f-45b0-8704-7d91c43c03c6",
+        "line": 57,
+        "version": 30,
+        "index": 1795
+      },
+      {
+        "id": "33b2d923-6639-45ea-b1b6-9e2ef0e9c188",
+        "line": 58,
+        "version": 30,
+        "index": 1796
+      },
+      {
+        "id": "6d767baf-31e2-462b-857f-a71626d0922d",
+        "line": 58,
+        "version": 30,
+        "index": 1796
+      },
+      {
+        "id": "4c17e932-ee52-451d-8c9c-0dfe23bea200",
+        "line": 58,
+        "version": 30,
+        "index": 1796
+      }
+    ],
+    "my-wave-portal/deploy_before_priz.js": [
+      {
+        "id": "8d92b392-57f1-4641-9478-dc46e2e84026",
+        "line": 3,
+        "version": 4,
+        "index": 65
+      },
+      {
+        "id": "b82efa28-187a-4659-a9bf-9048e4602845",
+        "line": 4,
+        "version": 4,
+        "index": 119
+      },
+      {
+        "id": "368a678a-71d9-464e-b892-ad7eb554f1da",
+        "line": 5,
+        "version": 4,
+        "index": 171
+      },
+      {
+        "id": "4df394ee-627b-422b-9447-c0c6110aca73",
+        "line": 6,
+        "version": 4,
+        "index": 178
+      },
+      {
+        "id": "80609f7a-54bf-41ee-a991-dfe3f15ca949",
+        "line": 7,
+        "version": 4,
+        "index": 251
+      }
+    ],
     "src/App.js": [
       {
         "id": "84775169-59e5-46b7-a482-d47911c1ae94",
@@ -8,28 +66,78 @@
         "index": 148
       },
       {
+        "id": "a7928ce6-0d2a-49af-a936-da1915a8f038",
+        "line": 9,
+        "version": 3075,
+        "index": 267
+      },
+      {
+        "id": "541dd7d6-7448-4a7a-add2-7f7a4b3744ba",
+        "line": 41,
+        "version": 3042,
+        "index": 1345
+      },
+      {
         "id": "1269e2f0-33d3-4be3-b563-a9c297a9a3ce",
-        "line": 77,
-        "version": 2780,
-        "index": 2206
+        "line": 78,
+        "version": 2814,
+        "index": 2265
+      },
+      {
+        "id": "3d927c5d-1124-41e7-84b8-3b35266f3c1b",
+        "line": 115,
+        "version": 3042,
+        "index": 3043
       },
       {
         "id": "c33acfe8-73e0-44b6-8d7f-7489b695dd4a",
-        "line": 131,
-        "version": 2780,
-        "index": 3582
+        "line": 132,
+        "version": 2814,
+        "index": 3666
       },
       {
         "id": "c95d1b5f-6d97-414e-bc99-90d2affe4622",
-        "line": 132,
-        "version": 2780,
-        "index": 3652
+        "line": 133,
+        "version": 2814,
+        "index": 3735
+      },
+      {
+        "id": "9dcfdf3d-8a78-4972-aeb2-b7edee121b9a",
+        "line": 176,
+        "version": 3043,
+        "index": 5000
+      },
+      {
+        "id": "93cb9c81-7cd3-44a6-a81b-ea0bfeccabc6",
+        "line": 177,
+        "version": 3043,
+        "index": 5055
+      },
+      {
+        "id": "830fb455-6026-47dd-93a6-041d41e72dc0",
+        "line": 178,
+        "version": 3043,
+        "index": 5109
       },
       {
         "id": "d8f0116b-6008-42ae-a0a0-a52c021c61b1",
-        "line": 179,
-        "version": 2813,
-        "index": 5082
+        "line": 178,
+        "version": 2814,
+        "index": 5141
+      },
+      {
+        "id": "d319c3a0-6fb4-4b0b-85a6-7cfd21076bad",
+        "line": 198,
+        "version": 3042,
+        "index": 5755
+      }
+    ],
+    "src/Message.js": [
+      {
+        "id": "b1fa14cc-87a6-4b34-ad88-ad0946af41ea",
+        "line": 30,
+        "version": 219,
+        "index": 718
       }
     ]
   }

@@ -6,14 +6,21 @@ import { Message } from './Message'
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [userMessage, setUserMessage] = React.useState("")
   
   /**
    * Create a variable here that holds the contract address after you deploy!
    */
   /// allWAVEs state
   const [allWaves, setAllWaves] = useState([]);
-  const contractAddress = "0x15F8Be9Ecc6CE3bDD70a987d64797a88024Ab8E3";
+  const contractAddress = "0x59373E2403Db29CcA6038E63799373aFd0a73aDA";
   const contractABI = abi.abi
+
+  function changeHandler(e) {
+     let usermsg = e.target.value
+     setUserMessage(usermsg)
+   }
+
   /////This get all waves
   const getAllWaves = async () => {
     try {
@@ -127,9 +134,8 @@ const wave = async () => {
 
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total corn count...", count.toNumber());
-
-        const waveTxn = await wavePortalContract.wave("NEIIIGH! 🌽!");
-        console.log("Mining...", waveTxn.hash);
+        /// "NEIIIGH! 🌽!"
+        const waveTxn = await wavePortalContract.wave(`${userMessage}`);        console.log("Mining...", waveTxn.hash);
         ////// TRY THIS:
         ///const waveTxn = await wavePortalContract.wave("this is a message")
         /// The above was edited for line 130
@@ -172,11 +178,12 @@ const wave = async () => {
         <p>And say Haaaayyy</p>
         <p>*They take RAINBOWS too</p>
         </div>
+        
+        <p>Leave Ando a message and feed some 🌽...</p>
+        <textarea value={userMessage} onChange={(event) => setUserMessage(event.target.value)}/>
 
         <button className="waveButton" onClick={wave}>
         <span role="img" aria-label="CORN">🌽</span> 
-        <p></p>
-        <Message />
         </button>
 
         

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
-//Contract Address:
-// 0x59373E2403Db29CcA6038E63799373aFd0a73aDA
+
+// CONTRACT ADDRESS:
+// 0x15F8Be9Ecc6CE3bDD70a987d64797a88024Ab8E3
 pragma solidity ^0.8.4;
 
 import "hardhat/console.sol";
@@ -29,12 +30,10 @@ contract WavePortal {
      */
     Wave[] waves;
 
-/*     constructor() {
+    constructor() {
         console.log("I AM SMART CONTRACT. POG.");
-    } */
-    constructor() payable {
-        console.log("We have been constructed!");
-        }
+    }
+
     /*
      * You'll notice I changed the wave function a little here as well and
      * now it requires a string called _message. This is the message our user
@@ -55,16 +54,14 @@ contract WavePortal {
          */
         emit NewWave(msg.sender, block.timestamp, _message);
 
-        /* Sending ETH to people who wave at you */
-
-        uint256 prizeAmount = 0.00001 ether;
+        uint256 prizeAmount = 0.0001 ether;
         require(
-            prizeAmount <= address(this).balance,
-            "Trying to withdraw more money than the contract has."
+          prizeAmount <= address(this).balance,
+          "Trying to withdraw more money than the contract has."
+
         );
         (bool success, ) = (msg.sender).call{value: prizeAmount}("");
         require(success, "Failed to withdraw money from contract.");
-
     }
 
     /*

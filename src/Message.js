@@ -1,4 +1,5 @@
 import React from 'react';
+import { wave } from './App.js'
 
 
 export class Message extends React.Component {
@@ -26,7 +27,7 @@ export class Message extends React.Component {
           Send a message to Ando:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="🌽" />
       </form>
     );
   }
