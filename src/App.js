@@ -134,20 +134,18 @@ const wave = async () => {
 
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total corn count...", count.toNumber());
-        /// "NEIIIGH! 🌽!"
-        const waveTxn = await wavePortalContract.wave(`${userMessage}`);        console.log("Mining...", waveTxn.hash);
-        ////// TRY THIS:
-        ///const waveTxn = await wavePortalContract.wave("this is a message")
-        /// The above was edited for line 130
+        const waveTxn = await wavePortalContract.wave(`${userMessage}`);       console.log("Mining...", waveTxn.hash);
         
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
 
         count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total corn count...", count.toNumber());
-
-        //test code for adding corn emoji here//
-        
+        // correct code:
+        // console.log("Retrieved total corn count...", count.toNumber());
+        //I just moved the parentheses that closes out the above console.log
+        //it was around the line below
+               
       } else {
         console.log("Ethereum object doesn't exist!");
       }
@@ -157,9 +155,8 @@ const wave = async () => {
       // console.log(message) //Added this
     }
   }
-
+      //let cornCount = count;
 ////////////////////////////////////////////////////////////////////////
-//*  GET WAVES */
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -179,7 +176,7 @@ const wave = async () => {
         <p>*They take RAINBOWS too</p>
         </div>
         
-        <p>Leave Ando a message and feed some 🌽...</p>
+        <p>Leave Ando a message and throw some 🌽...</p>
         <textarea value={userMessage} onChange={(event) => setUserMessage(event.target.value)}/>
 
         <button className="waveButton" onClick={wave}>
@@ -193,7 +190,7 @@ const wave = async () => {
         */}
         {!currentAccount && (
           <button className="waveButton" onClick={connectWallet}>
-            READY...Connect Wallet!
+            READY...SET...Connect Wallet!
           </button>
         )}
         
