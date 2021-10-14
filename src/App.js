@@ -170,7 +170,6 @@ const wave = async () => {
 
         <div className="bio">
         <p>Ando is taking care of some unicorns</p>
-        <p>They have eaten corn...this {} much corn!</p>
         <p>Throw some corn at them!</p>
         <p>And say Haaaayyy</p>
         <p>*They take RAINBOWS too</p>
