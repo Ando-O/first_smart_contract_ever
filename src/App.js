@@ -13,7 +13,7 @@ const App = () => {
    */
   /// allWAVEs state
   const [allWaves, setAllWaves] = useState([]);
-  const contractAddress = "0x59373E2403Db29CcA6038E63799373aFd0a73aDA";
+  const contractAddress = "0x79EA1d5146023b0a46B5D87f01fa8d9712F920fb";
   const contractABI = abi.abi
 
   function changeHandler(e) {
@@ -53,6 +53,22 @@ const App = () => {
          * Store our data in React State
          */
         setAllWaves(wavesCleaned);
+
+
+        /**
+         * Listen in for emitter events
+         */
+
+        wavePortalContract.on("NewWave", (from, timestamp, message) => {
+          console.log("NewWave", from, timestamp, message);
+
+          setAllWaves(prevState => [...prevState, {
+            address: from,
+            timestamp: new Date(timestamp * 1000),
+            message: message
+          }]);
+        });
+
       } else {
         console.log("Ethereum object doesn't exist!")
       }
@@ -134,7 +150,8 @@ const wave = async () => {
 
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total corn count...", count.toNumber());
-        const waveTxn = await wavePortalContract.wave(`${userMessage}`);       console.log("Mining...", waveTxn.hash);
+        const waveTxn = await wavePortalContract.wave(`${userMessage}`, { gasLimit: 300000});       
+        console.log("Mining...", waveTxn.hash);
         
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
@@ -169,7 +186,7 @@ const wave = async () => {
         </div>
 
         <div className="bio">
-        <p>Ando is taking care of some unicorns</p>
+        <p>Ando is taking care of some unicorns on Rinkeby</p>
         <p>Throw some corn at them!</p>
         <p>And say Haaaayyy</p>
         <p>*They take RAINBOWS too</p>
