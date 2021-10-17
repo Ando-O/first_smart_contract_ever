@@ -5,6 +5,7 @@ This project deploys a Solidity + Ethereum Smart Contract that allows users to c
 to Ando's feeding ground for unicorns on Rinkeyby Ethereum Network (using Fake Eth).
 
 You can feed the unicorns corn and leave Ando a message. 
-*And you mind win some (fake) Eth!
+
+*And you might win some (fake) Eth!
 
 ![ando's site](ando000.png)
